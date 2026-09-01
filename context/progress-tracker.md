@@ -14,15 +14,23 @@
 
 - [x] Product specifications, technical architecture, UI tokens, code standards, and AI workflow rules synthesized into `context/` from `Project-overview.md`.
 - [x] Initialized Next.js 16 project scaffolding with TypeScript and Tailwind CSS.
+- [x] **FEAT-001-BE-auth-workspace**: Complete Prisma schema (`User`, `Account`, `Session`, `Workspace`, `WorkspaceMember`, `Project`, `Board`, `Column`, `Task`, `Subtask`, `Label`, `TaskLabel`, `Comment`, `AutomationRule`, `ExecutionLog`, `Notification`, `Subscription`).
+- [x] **FEAT-001-BE-auth-workspace**: Auth.js v5 setup (Credentials + OAuth), password hashing with bcrypt, session helpers, route handlers, and edge route protection middleware.
+- [x] **FEAT-001-BE-auth-workspace**: Multi-tenant RBAC engine (`hasMinimumRole`, `requireWorkspaceAccess`, role hierarchy), workspace CRUD, slug generation, invite code joining, member role management actions, and Vitest test suite (18/18 passing tests).
+
+- [x] **FEAT-001-FE-auth-workspace**: Base shadcn/ui primitives (`Button`, `Input`, `Label`, `Form`, `Card`, `Dialog`, `DropdownMenu`, `Select`, `Avatar`, `Badge`) and "Quiet Luxury" styling tokens.
+- [x] **FEAT-001-FE-auth-workspace**: Sign-in & sign-up pages (`app/(auth)/login/page.tsx`, `app/(auth)/register/page.tsx`) with React Hook Form + Zod and OAuth providers.
+- [x] **FEAT-001-FE-auth-workspace**: Workspace onboarding wizard (`app/onboarding/page.tsx`) with automatic slug suggestion and workspace creation.
+- [x] **FEAT-001-FE-auth-workspace**: Sidebar `WorkspaceSwitcher` dropdown, `InviteMemberDialog` with copy-to-clipboard feedback, `MemberTable` with RBAC role updates, and dashboard shell.
+- [x] **FEAT-001-FE-auth-workspace**: Unit & validation test suite (28/28 tests passing across backend and frontend).
 
 ## In Progress
 
-- [ ] Project configuration with shadcn/ui primitives, Lucide icons, React Hook Form, and Zod validation utilities.
-- [ ] Prisma schema design covering multi-tenant models: `User`, `Account`, `Session`, `Workspace`, `WorkspaceMember`, `Project`, `Board`, `Column`, `Task`, `Subtask`, `Comment`, `Rule`, `ExecutionLog`, `Notification`, `Subscription`.
+- [ ] **FEAT-001-VERIFY-auth-workspace**: End-to-end multi-tenant validation, session edge cases, and automated integration checks.
 
 ## Next Up
 
-1. **Phase 1 (Weeks 1–2)**: Auth.js setup (OAuth + Credentials), multi-tenant middleware, workspace onboarding wizard (React Hook Form + Zod), member invites, and RBAC (`Owner`, `Admin`, `Member`, `Viewer`).
+1. **Phase 1 (Weeks 1–2)**: `FEAT-001-VERIFY-auth-workspace` (Automated verification & integration checks for auth and multi-tenancy).
 2. **Phase 2 (Weeks 3–4)**: Project/Task CRUD, drag-and-drop Kanban board (`@dnd-kit`), list view, calendar view, task detail dialogs (shadcn/ui), markdown comments, and file attachments.
 3. **Phase 3 (Week 5)**: Real-time collaboration layer (live presence indicators, instant task broadcast synchronization via Pusher/Ably).
 4. **Phase 4 (Week 6)**: Rules-based automation engine (visual trigger/condition/action rule builder with React Hook Form, custom JSON rule evaluator, Upstash Redis queue worker, audit execution logs).
