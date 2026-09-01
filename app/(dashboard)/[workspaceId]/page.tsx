@@ -16,9 +16,7 @@ import {
   Kanban,
   Zap,
   Users,
-  BarChart3,
   ArrowRight,
-  Plus,
   Compass,
 } from "lucide-react";
 
@@ -36,10 +34,9 @@ export default async function WorkspaceOverviewPage({
     redirect("/login");
   }
 
-  let accessContext;
   try {
-    accessContext = await requireWorkspaceAccess(workspaceId, "VIEWER");
-  } catch (err) {
+    await requireWorkspaceAccess(workspaceId, "VIEWER");
+  } catch {
     redirect("/onboarding");
   }
 

@@ -80,7 +80,7 @@ export async function updateMemberRoleAction(
   }
 
   try {
-    const { user: currentUser, role: currentRole } = await requireWorkspaceAccess(
+    const { role: currentRole } = await requireWorkspaceAccess(
       workspaceId,
       "ADMIN"
     );

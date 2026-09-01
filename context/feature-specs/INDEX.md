@@ -9,9 +9,9 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | File ID | Layer | Priority | Feature Module | Depends On | Status | Description |
 | --- | --- | --- | --- | --- | --- | --- |
 | `000-shared-contracts.md` | Core | P0 | Global | None | Completed | Shared data models, types, RBAC patterns, and conventions |
-| `FEAT-001-BE-auth-workspace.md` | BE | P0 | Auth & Workspace | `000-shared-contracts.md` | Not Started | Auth.js handlers, workspace CRUD, invite codes, and RBAC actions |
-| `FEAT-001-FE-auth-workspace.md` | FE | P0 | Auth & Workspace | `FEAT-001-BE-auth-workspace.md` | Not Started | Auth forms, workspace onboarding wizard, switcher, and invite dialog |
-| `FEAT-001-VERIFY-auth-workspace.md` | VERIFY | P0 | Auth & Workspace | `FEAT-001-FE-auth-workspace.md` | Not Started | Verification pass for Auth & Multi-Tenancy |
+| `FEAT-001-BE-auth-workspace.md` | BE | P0 | Auth & Workspace | `000-shared-contracts.md` | Completed | Auth.js handlers, workspace CRUD, invite codes, and RBAC actions |
+| `FEAT-001-FE-auth-workspace.md` | FE | P0 | Auth & Workspace | `FEAT-001-BE-auth-workspace.md` | Completed | Auth forms, workspace onboarding wizard, switcher, and invite dialog |
+| `FEAT-001-VERIFY-auth-workspace.md` | VERIFY | P0 | Auth & Workspace | `FEAT-001-FE-auth-workspace.md` | Completed | Verification pass for Auth & Multi-Tenancy |
 | `FEAT-002-BE-projects-boards.md` | BE | P0 | Projects & Boards | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | Project CRUD, board column management, and workspace scoping |
 | `FEAT-002-FE-projects-boards.md` | FE | P0 | Projects & Boards | `FEAT-002-BE-projects-boards.md` | Not Started | Project navigation tree, project settings, and board view scaffolding |
 | `FEAT-002-VERIFY-projects-boards.md` | VERIFY | P0 | Projects & Boards | `FEAT-002-FE-projects-boards.md` | Not Started | Verification pass for Projects & Boards |

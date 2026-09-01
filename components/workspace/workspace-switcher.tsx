@@ -14,7 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
-import { Building, Check, ChevronsUpDown, Plus, Sparkles } from "lucide-react";
+import { Check, ChevronsUpDown, Plus } from "lucide-react";
 
 interface WorkspaceSwitcherProps {
   currentWorkspaceId: string;

@@ -22,16 +22,17 @@
 - [x] **FEAT-001-FE-auth-workspace**: Sign-in & sign-up pages (`app/(auth)/login/page.tsx`, `app/(auth)/register/page.tsx`) with React Hook Form + Zod and OAuth providers.
 - [x] **FEAT-001-FE-auth-workspace**: Workspace onboarding wizard (`app/onboarding/page.tsx`) with automatic slug suggestion and workspace creation.
 - [x] **FEAT-001-FE-auth-workspace**: Sidebar `WorkspaceSwitcher` dropdown, `InviteMemberDialog` with copy-to-clipboard feedback, `MemberTable` with RBAC role updates, and dashboard shell.
-- [x] **FEAT-001-FE-auth-workspace**: Unit & validation test suite (28/28 tests passing across backend and frontend).
+- [x] **FEAT-001-VERIFY-auth-workspace**: Complete test verification pass with 42/42 passing unit, server action, validation, and component tests; 0 TypeScript errors; 0 ESLint warnings.
 
 ## In Progress
 
-- [ ] **FEAT-001-VERIFY-auth-workspace**: End-to-end multi-tenant validation, session edge cases, and automated integration checks.
+- [ ] **Phase 2 (Weeks 3–4)**: `FEAT-002-BE-projects-boards` (Project CRUD, board column management, and workspace scoping).
 
 ## Next Up
 
-1. **Phase 1 (Weeks 1–2)**: `FEAT-001-VERIFY-auth-workspace` (Automated verification & integration checks for auth and multi-tenancy).
-2. **Phase 2 (Weeks 3–4)**: Project/Task CRUD, drag-and-drop Kanban board (`@dnd-kit`), list view, calendar view, task detail dialogs (shadcn/ui), markdown comments, and file attachments.
+1. **Phase 2 (Weeks 3–4)**: `FEAT-002-BE-projects-boards` (Project CRUD, board column management, and workspace scoping).
+2. **Phase 2 (Weeks 3–4)**: `FEAT-002-FE-projects-boards` (Project navigation tree, project settings, board view scaffolding).
+3. **Phase 2 (Weeks 3–4)**: `FEAT-002-VERIFY-projects-boards` (Verification pass for Projects & Boards).
 3. **Phase 3 (Week 5)**: Real-time collaboration layer (live presence indicators, instant task broadcast synchronization via Pusher/Ably).
 4. **Phase 4 (Week 6)**: Rules-based automation engine (visual trigger/condition/action rule builder with React Hook Form, custom JSON rule evaluator, Upstash Redis queue worker, audit execution logs).
 5. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) and notification center (in-app + Resend email).

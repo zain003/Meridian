@@ -15,11 +15,8 @@ import {
   Zap,
   BarChart3,
   Users,
-  Settings,
   Bell,
-  Search,
   LogOut,
-  Compass,
 } from "lucide-react";
 import { signOut } from "@/auth";
 
@@ -42,7 +39,7 @@ export default async function DashboardLayout({
   let accessContext;
   try {
     accessContext = await requireWorkspaceAccess(workspaceId, "VIEWER");
-  } catch (err) {
+  } catch {
     redirect("/onboarding");
   }
 

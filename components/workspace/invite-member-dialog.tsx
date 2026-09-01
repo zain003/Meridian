@@ -36,13 +36,13 @@ export function InviteMemberDialog({
   const [copied, setCopied] = React.useState(false);
   const [role, setRole] = React.useState<"ADMIN" | "MEMBER" | "VIEWER">("MEMBER");
 
-  const [origin, setOrigin] = React.useState("");
-  React.useEffect(() => {
-    if (typeof window !== "undefined") {
-      setOrigin(window.location.origin);
-    }
-  }, []);
+  const isClient = React.useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false
+  );
 
+  const origin = isClient ? window.location.origin : "";
   const inviteLink = `${origin}/join?code=${inviteCode}`;
 
   const handleCopy = async () => {

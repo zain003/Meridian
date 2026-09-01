@@ -3,12 +3,10 @@ import { getAuthSession } from "@/lib/auth";
 import { getUserWorkspacesAction } from "@/server/actions/workspaces";
 import { Button } from "@/components/ui/button";
 import {
-  Compass,
   ArrowRight,
   ShieldCheck,
   Zap,
   Kanban,
-  Users,
 } from "lucide-react";
 
 export default async function Home() {

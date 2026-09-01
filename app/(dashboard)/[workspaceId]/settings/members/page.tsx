@@ -6,8 +6,7 @@ import { requireWorkspaceAccess } from "@/lib/rbac";
 import { MemberTable } from "@/components/workspace/member-table";
 import { InviteMemberDialog } from "@/components/workspace/invite-member-dialog";
 import type { UserRole } from "@/types";
-import { Users, UserPlus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Users } from "lucide-react";
 
 interface MembersPageProps {
   params: Promise<{ workspaceId: string }>;
@@ -24,7 +23,7 @@ export default async function MembersPage({ params }: MembersPageProps) {
   let accessContext;
   try {
     accessContext = await requireWorkspaceAccess(workspaceId, "VIEWER");
-  } catch (err) {
+  } catch {
     redirect("/onboarding");
   }
 

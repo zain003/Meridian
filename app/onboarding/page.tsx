@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createWorkspaceSchema, type CreateWorkspaceInput } from "@/lib/validations/workspace";
 import { createWorkspaceAction, getUserWorkspacesAction } from "@/server/actions/workspaces";
@@ -13,7 +13,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -62,7 +61,10 @@ export default function OnboardingPage() {
     },
   });
 
-  const workspaceName = form.watch("name");
+  const workspaceName = useWatch({
+    control: form.control,
+    name: "name",
+  });
 
   // Auto-suggest slug when workspace name changes (if user hasn't explicitly modified slug)
   React.useEffect(() => {
