@@ -43,12 +43,12 @@ Update the relevant context file whenever implementation changes:
 
 - **Architecture / System Boundaries**: Update `context/architecture.md` when adding models, queue workflows, or third-party integrations.
 - **UI & Design Tokens**: Update `context/ui-context.md` when introducing new visual tokens or layout patterns.
-- **Code Standards**: Update `context/code-standards.md` when adopting new conventions or patterns.
-- **Roadmap & Progress**: Update `context/progress-tracker.md` upon completing any meaningful implementation milestone.
+- **Test Reports & QA Matrix**: For every implemented feature, generate a dedicated test execution report at `test-reports/FEAT-xxx-[feature-name]-report.md` (in the project root directory) according to `context/testing-standards.md`, and update `test-reports/INDEX.md`.
 
-## Before Moving to the Next Unit
+## Before Moving to the Next Unit (Definition of Done)
 
-1. **Functional Verification**: The current unit functions end-to-end within its defined scope.
+1. **Functional Verification & Automated Tests**: Run all unit, integration, and UI component tests (`vitest run`). All test suites must pass 100%.
 2. **Invariant Compliance**: No architectural invariant from `context/architecture.md` (e.g., workspace isolation, zero external AI dependencies, strict form validation with React Hook Form + Zod, shadcn/ui and Lucide compliance) is violated.
-3. **Type Safety**: TypeScript compiles cleanly with zero errors (`tsc --noEmit`).
-4. **Progress Tracking**: `context/progress-tracker.md` is updated with completed tasks and the next immediate focus.
+3. **Type Safety & Linting**: TypeScript compiles with zero errors (`tsc --noEmit`) and ESLint passes with zero warnings (`npm run lint`).
+4. **Test Report Documentation**: Dedicated test report generated in root `test-reports/FEAT-xxx-report.md` with full test case matrix, and `test-reports/INDEX.md` catalog updated.
+5. **Progress Tracking**: `context/progress-tracker.md` and `context/feature-specs/INDEX.md` are updated with completed tasks and the next immediate focus.

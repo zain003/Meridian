@@ -26,7 +26,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Badge } from "@/components/ui/badge";
-import { Loader2, ArrowRight, Building, Plus, Compass } from "lucide-react";
+import { signOut } from "next-auth/react";
+import { Loader2, ArrowRight, Building, Plus, Compass, LogOut } from "lucide-react";
 
 export default function OnboardingPage() {
   const router = useRouter();
@@ -110,6 +111,19 @@ export default function OnboardingPage() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-[#09090b] text-foreground px-4 py-12">
+      {/* Top right sign out */}
+      <div className="absolute top-6 right-6 z-20">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => signOut({ callbackUrl: "/login" })}
+          className="h-8 bg-zinc-900/60 hover:bg-zinc-800 border-zinc-800 text-xs text-zinc-400 hover:text-zinc-200 gap-1.5 shadow-sm"
+        >
+          <LogOut className="size-3.5" />
+          Sign Out
+        </Button>
+      </div>
+
       {/* Background glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-primary/10 rounded-full blur-[140px] pointer-events-none" />
 

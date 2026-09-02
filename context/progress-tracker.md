@@ -23,16 +23,20 @@
 - [x] **FEAT-001-FE-auth-workspace**: Workspace onboarding wizard (`app/onboarding/page.tsx`) with automatic slug suggestion and workspace creation.
 - [x] **FEAT-001-FE-auth-workspace**: Sidebar `WorkspaceSwitcher` dropdown, `InviteMemberDialog` with copy-to-clipboard feedback, `MemberTable` with RBAC role updates, and dashboard shell.
 - [x] **FEAT-001-VERIFY-auth-workspace**: Complete test verification pass with 42/42 passing unit, server action, validation, and component tests; 0 TypeScript errors; 0 ESLint warnings.
+- [x] **FEAT-002-BE-projects-boards**: Project & Board CRUD Server Actions (`server/actions/projects.ts`, `server/actions/boards.ts`), automatic default board & 5 column provisioning (Backlog, Todo, In Progress, Review, Done), key uniqueness per workspace, column reordering atomic transaction, delete column task migration, Zod validations (`lib/validations/project.ts`), and Vitest test suite (33/33 passing tests, 75/75 global).
+- [x] **FEAT-002-FE-projects-boards**: Project navigation tree & active state highlighting in `Sidebar` (`components/workspace/sidebar.tsx`), `CreateProjectDialog` with auto-key generator (`components/projects/create-project-dialog.tsx`), `BoardHeader` with view switcher tabs syncing `?view=` URL search params (`components/boards/board-header.tsx`), `BoardColumnHeader` with task counts and delete confirmation (`components/boards/board-column-header.tsx`), `AddColumnButton` with inline form (`components/boards/add-column-button.tsx`), Next.js 16 App Router Project Board page (`app/(dashboard)/[workspaceId]/projects/[projectId]/page.tsx`), and component test suite (15/15 passing tests, 90/90 global).
+- [x] **FEAT-002-VERIFY-projects-boards**: Complete verification pass for Projects & Boards with 101/101 passing tests across 12 test suites, 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
 
 ## In Progress
 
-- [ ] **Phase 2 (Weeks 3–4)**: `FEAT-002-BE-projects-boards` (Project CRUD, board column management, and workspace scoping).
+- [ ] **Phase 3 (Weeks 3–4)**: `FEAT-003-BE-tasks` (Task CRUD, column movement, subtasks, labels, and comments).
 
 ## Next Up
 
-1. **Phase 2 (Weeks 3–4)**: `FEAT-002-BE-projects-boards` (Project CRUD, board column management, and workspace scoping).
-2. **Phase 2 (Weeks 3–4)**: `FEAT-002-FE-projects-boards` (Project navigation tree, project settings, board view scaffolding).
-3. **Phase 2 (Weeks 3–4)**: `FEAT-002-VERIFY-projects-boards` (Verification pass for Projects & Boards).
+1. **Phase 3 (Weeks 3–4)**: `FEAT-003-BE-tasks` (Task CRUD, column movement, subtasks, labels, and comments).
+2. **Phase 3 (Weeks 3–4)**: `FEAT-003-FE-kanban-dnd` (Drag-and-drop Kanban board with `@dnd-kit` and optimistic updates).
+3. **Phase 3 (Weeks 3–4)**: `FEAT-003-FE-task-views` (List view, Calendar view, and Task detail modal drawer).
+4. **Phase 3 (Weeks 3–4)**: `FEAT-003-VERIFY-tasks` (Verification pass for Tasks & Multi-View UI).
 3. **Phase 3 (Week 5)**: Real-time collaboration layer (live presence indicators, instant task broadcast synchronization via Pusher/Ably).
 4. **Phase 4 (Week 6)**: Rules-based automation engine (visual trigger/condition/action rule builder with React Hook Form, custom JSON rule evaluator, Upstash Redis queue worker, audit execution logs).
 5. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) and notification center (in-app + Resend email).

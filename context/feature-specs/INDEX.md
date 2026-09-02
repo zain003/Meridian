@@ -12,9 +12,9 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-001-BE-auth-workspace.md` | BE | P0 | Auth & Workspace | `000-shared-contracts.md` | Completed | Auth.js handlers, workspace CRUD, invite codes, and RBAC actions |
 | `FEAT-001-FE-auth-workspace.md` | FE | P0 | Auth & Workspace | `FEAT-001-BE-auth-workspace.md` | Completed | Auth forms, workspace onboarding wizard, switcher, and invite dialog |
 | `FEAT-001-VERIFY-auth-workspace.md` | VERIFY | P0 | Auth & Workspace | `FEAT-001-FE-auth-workspace.md` | Completed | Verification pass for Auth & Multi-Tenancy |
-| `FEAT-002-BE-projects-boards.md` | BE | P0 | Projects & Boards | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | Project CRUD, board column management, and workspace scoping |
-| `FEAT-002-FE-projects-boards.md` | FE | P0 | Projects & Boards | `FEAT-002-BE-projects-boards.md` | Not Started | Project navigation tree, project settings, and board view scaffolding |
-| `FEAT-002-VERIFY-projects-boards.md` | VERIFY | P0 | Projects & Boards | `FEAT-002-FE-projects-boards.md` | Not Started | Verification pass for Projects & Boards |
+| `FEAT-002-BE-projects-boards.md` | BE | P0 | Projects & Boards | `FEAT-001-VERIFY-auth-workspace.md` | Completed | Project CRUD, board column management, and workspace scoping |
+| `FEAT-002-FE-projects-boards.md` | FE | P0 | Projects & Boards | `FEAT-002-BE-projects-boards.md` | Completed | Project navigation tree, project settings, and board view scaffolding |
+| `FEAT-002-VERIFY-projects-boards.md` | VERIFY | P0 | Projects & Boards | `FEAT-002-FE-projects-boards.md` | Completed | Verification pass for Projects & Boards |
 | `FEAT-003-BE-tasks.md` | BE | P0 | Tasks & Views | `FEAT-002-VERIFY-projects-boards.md` | Not Started | Task CRUD, column movement, subtasks, labels, and comments |
 | `FEAT-003-FE-kanban-dnd.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Not Started | Drag-and-drop Kanban board with `@dnd-kit` and optimistic updates |
 | `FEAT-003-FE-task-views.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Not Started | List view, Calendar view, and Task detail modal drawer |
