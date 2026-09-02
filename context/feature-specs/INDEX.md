@@ -23,10 +23,10 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-004-INT-realtime-sync.md` | INT | P0 | Real-Time Sync | `FEAT-004-BE-realtime.md`, `FEAT-003-BE-tasks.md` | Completed | Task mutation event broadcast dispatchers and client sync hooks |
 | `FEAT-004-FE-presence-ui.md` | FE | P0 | Real-Time Sync | `FEAT-004-INT-realtime-sync.md` | Completed | Live presence avatar stack and active card viewer badges |
 | `FEAT-004-VERIFY-realtime.md` | VERIFY | P0 | Real-Time Sync | `FEAT-004-FE-presence-ui.md` | Not Started | Verification pass for Real-Time & Live Presence |
-| `FEAT-005-BE-rule-engine.md` | BE | P0 | Automation Engine | `FEAT-003-BE-tasks.md` | Not Started | JSON rule parser, condition evaluator, action executor, loop guard |
-| `FEAT-005-INT-queue-worker.md` | INT | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Not Started | Upstash Redis queue producer/consumer and execution audit logger |
-| `FEAT-005-FE-rule-builder.md` | FE | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Not Started | Visual block-based rule builder canvas and audit execution log list |
-| `FEAT-005-VERIFY-automation.md` | VERIFY | P0 | Automation Engine | `FEAT-005-FE-rule-builder.md` | Not Started | Verification pass for Automation Engine |
+| `FEAT-005-BE-rule-engine.md` | BE | P0 | Automation Engine | `FEAT-003-BE-tasks.md` | Completed | JSON rule parser, condition evaluator, action executor, loop guard |
+| `FEAT-005-INT-queue-worker.md` | INT | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Completed | Upstash Redis queue producer/consumer and execution audit logger |
+| `FEAT-005-FE-rule-builder.md` | FE | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Completed | Visual block-based rule builder canvas and audit execution log list |
+| `FEAT-005-VERIFY-automation.md` | VERIFY | P0 | Automation Engine | `FEAT-005-FE-rule-builder.md` | Completed | Verification pass for Automation Engine |
 | `FEAT-006-BE-notifications.md` | BE | P1 | Notifications | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | In-app notification CRUD and Resend transactional email dispatcher |
 | `FEAT-006-FE-notification-center.md` | FE | P1 | Notifications | `FEAT-006-BE-notifications.md` | Not Started | Notification bell, unread badge, and notification popover drawer |
 | `FEAT-006-VERIFY-notifications.md` | VERIFY | P1 | Notifications | `FEAT-006-FE-notification-center.md` | Not Started | Verification pass for Notifications |

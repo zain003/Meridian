@@ -32,17 +32,22 @@
 - [x] **FEAT-004-BE-realtime**: Server-side Pusher client singleton (`lib/pusher.ts`), presence and private channel authorization logic with PostgreSQL workspace membership enforcement, channel parsing schemas (`lib/validations/realtime.ts`), HTTP route handler (`app/api/realtime/auth/route.ts`), and Vitest unit test suite (16/16 passing tests, 186/186 global).
 - [x] **FEAT-004-INT-realtime-sync**: Task mutation event broadcasting dispatchers in `server/actions/tasks.ts` (`broadcastTaskMutation`), client-side board subscription hook `useBoardRealtimeSync`, and non-blocking event handling.
 - [x] **FEAT-004-FE-presence-ui**: Collaborative `PresenceAvatarStack` with overflow badge (`+N`) and tooltips, `TaskCardViewers` on task cards, `usePresenceChannel` hook tracking active workspace collaborators and card viewers, shadcn `Tooltip` primitive (`components/ui/tooltip.tsx`), and Vitest component test suite (9/9 passing tests, 195/195 global).
+- [x] **FEAT-005-BE-rule-engine**: Deterministic JSON condition evaluator (`lib/automation/evaluator.ts`), action dispatcher with loop protection guard (`lib/automation/executor.ts`, max depth = 3), ExecutionLog recording, Rule CRUD Server Actions with RBAC (`server/actions/automation.ts`), and Vitest unit test suite (17/17 passing tests, 218/218 global).
+- [x] **FEAT-005-INT-queue-worker**: Upstash Redis client singleton (`lib/redis.ts`), background queue producer (`lib/automation/queue.ts`), worker rule matcher (`lib/automation/worker.ts`), task mutation enqueue triggers (`server/actions/tasks.ts`), and cron queue worker API route (`app/api/cron/automations/route.ts`).
+- [x] **FEAT-005-FE-rule-builder**: Visual block-based rule builder dialog (`components/automation/rule-builder-dialog.tsx`) with 3-step connected pipeline (TriggerNode, ConditionNode with dynamic filters, ActionNode), `RuleList` table with optimistic active switch toggles, `ExecutionLogDrawer` with status badges and formatted JSON payloads, `Switch` primitive (`components/ui/switch.tsx`), Next.js 16 App Router automation page (`app/(dashboard)/[workspaceId]/automation/page.tsx`), and Vitest component test suite (9/9 passing tests, 227/227 global).
+- [x] **FEAT-005-VERIFY-automation**: Complete verification pass for Automation Engine with 30/30 passing tests across 3 feature test suites (231/231 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
 
 ## In Progress
 
-- [ ] **Phase 3 (Week 5)**: `FEAT-004-VERIFY-realtime` (Verification pass for Real-Time & Live Presence).
+- [ ] **Phase 5 (Week 7)**: `FEAT-006-BE-notifications` (In-app notification CRUD and Resend transactional email dispatcher).
 
 ## Next Up
 
-1. **Phase 3 (Week 5)**: `FEAT-004-VERIFY-realtime` (Verification pass for Real-Time & Live Presence).
-2. **Phase 4 (Week 6)**: Rules-based automation engine (visual trigger/condition/action rule builder with React Hook Form, custom JSON rule evaluator, Upstash Redis queue worker, audit execution logs).
-3. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) and notification center (in-app + Resend email).
-4. **Phase 6 (Week 8)**: Team analytics dashboard (velocity, burndown, cycle time, workload charts via Recharts), Vitest & Playwright testing, deployment to Vercel.
+1. **Phase 5 (Week 7)**: `FEAT-006-BE-notifications` (In-app notification CRUD and Resend transactional email dispatcher).
+2. **Phase 5 (Week 7)**: `FEAT-006-FE-notification-center` (Notification bell, unread badge, and notification popover drawer).
+3. **Phase 5 (Week 7)**: `FEAT-006-VERIFY-notifications` (Verification pass for Notifications).
+4. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) (`FEAT-007`).
+5. **Phase 6 (Week 8)**: Team analytics dashboard (velocity, burndown, cycle time, workload charts via Recharts), Vitest & Playwright testing, deployment to Vercel.
 
 ## Open Questions
 

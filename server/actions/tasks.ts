@@ -3,6 +3,7 @@
 import { requireWorkspaceAccess } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
 import { broadcastTaskMutation } from "@/lib/realtime/broadcast";
+import { enqueueAutomationJob } from "@/lib/automation/queue";
 import {
   createTaskSchema,
   moveTaskSchema,
@@ -147,6 +148,24 @@ export async function createTaskAction(
         dueDate: dueDate || null,
       },
       actorId: accessContext.user.id,
+    });
+
+    // Enqueue automation job asynchronously
+    void enqueueAutomationJob({
+      workspaceId,
+      triggerType: "TASK_CREATED",
+      taskId: task.id,
+      newData: {
+        id: task.id,
+        workspaceId,
+        projectId,
+        columnId,
+        title: title.trim(),
+        priority: priority ?? "MEDIUM",
+        order: targetOrder,
+        dueDate: dueDate || null,
+        assigneeId: assigneeId || null,
+      },
     });
 
     return {
@@ -320,6 +339,19 @@ export async function moveTaskAction(
       actorId: accessContext.user.id,
     });
 
+    // Enqueue automation job asynchronously
+    void enqueueAutomationJob({
+      workspaceId: task.project.workspaceId,
+      triggerType: "TASK_STATUS_CHANGED",
+      taskId,
+      previousData: { columnId: sourceColumnId },
+      newData: {
+        id: taskId,
+        columnId: destinationColumnId,
+        order: newOrder,
+      },
+    });
+
     return {
       success: true,
       data: undefined,
@@ -458,6 +490,32 @@ export async function updateTaskAction(
       },
       actorId: accessContext.user.id,
     });
+
+    // Enqueue automation job asynchronously
+    if (priority !== undefined) {
+      void enqueueAutomationJob({
+        workspaceId: task.project.workspaceId,
+        triggerType: "TASK_PRIORITY_CHANGED",
+        taskId,
+        newData: { id: taskId, priority },
+      });
+    }
+    if (assigneeId !== undefined) {
+      void enqueueAutomationJob({
+        workspaceId: task.project.workspaceId,
+        triggerType: "TASK_ASSIGNEE_CHANGED",
+        taskId,
+        newData: { id: taskId, assigneeId },
+      });
+    }
+    if (columnId !== undefined) {
+      void enqueueAutomationJob({
+        workspaceId: task.project.workspaceId,
+        triggerType: "TASK_STATUS_CHANGED",
+        taskId,
+        newData: { id: taskId, columnId },
+      });
+    }
 
     return {
       success: true,
