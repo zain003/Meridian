@@ -8,7 +8,7 @@ Running catalog of all test execution reports across every implemented feature a
 
 | Total Test Suites | Total Tests | Passed | Failed | TypeScript Strict Mode | ESLint Cleanliness | Overall Status |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **12 Suites** | **101 Tests** | **101** | **0** | ✅ **0 Errors** | ✅ **0 Warnings** | ✅ **100% PASSED** |
+| **19 Suites** | **170 Tests** | **170** | **0** | ✅ **0 Errors** | ✅ **0 Warnings** | ✅ **100% PASSED** |
 
 ---
 
@@ -18,7 +18,7 @@ Running catalog of all test execution reports across every implemented feature a
 | :--- | :--- | :--- | :---: | :---: | :--- |
 | **FEAT-001** | Auth & Multi-Tenant Workspaces | [`FEAT-001-auth-workspace-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-001-auth-workspace-report.md) | 42 | ✅ PASS | 2026-09-02 |
 | **FEAT-002** | Projects, Boards & Columns | [`FEAT-002-VERIFY-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-002-VERIFY-projects-boards-report.md) | 59 | ✅ PASS | 2026-09-02 |
-| **FEAT-003** | Task CRUD & Drag-and-Drop Kanban | *Pending implementation* | — | ⏳ Upcoming | — |
+| **FEAT-003** | Tasks & Multi-View UI (BE + FE + Views) | [`FEAT-003-VERIFY-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-003-VERIFY-tasks-report.md) | 69 | ✅ PASS | 2026-09-02 |
 | **FEAT-004** | Real-Time Sync & Live Presence | *Pending implementation* | — | ⏳ Upcoming | — |
 | **FEAT-005** | Workflow Automation Engine | *Pending implementation* | — | ⏳ Upcoming | — |
 | **FEAT-006** | In-App & Email Notifications | *Pending implementation* | — | ⏳ Upcoming | — |

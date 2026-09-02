@@ -15,10 +15,10 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-002-BE-projects-boards.md` | BE | P0 | Projects & Boards | `FEAT-001-VERIFY-auth-workspace.md` | Completed | Project CRUD, board column management, and workspace scoping |
 | `FEAT-002-FE-projects-boards.md` | FE | P0 | Projects & Boards | `FEAT-002-BE-projects-boards.md` | Completed | Project navigation tree, project settings, and board view scaffolding |
 | `FEAT-002-VERIFY-projects-boards.md` | VERIFY | P0 | Projects & Boards | `FEAT-002-FE-projects-boards.md` | Completed | Verification pass for Projects & Boards |
-| `FEAT-003-BE-tasks.md` | BE | P0 | Tasks & Views | `FEAT-002-VERIFY-projects-boards.md` | Not Started | Task CRUD, column movement, subtasks, labels, and comments |
-| `FEAT-003-FE-kanban-dnd.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Not Started | Drag-and-drop Kanban board with `@dnd-kit` and optimistic updates |
-| `FEAT-003-FE-task-views.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Not Started | List view, Calendar view, and Task detail modal drawer |
-| `FEAT-003-VERIFY-tasks.md` | VERIFY | P0 | Tasks & Views | `FEAT-003-FE-task-views.md` | Not Started | Verification pass for Tasks & Multi-View UI |
+| `FEAT-003-BE-tasks.md` | BE | P0 | Tasks & Views | `FEAT-002-VERIFY-projects-boards.md` | Completed | Task CRUD, column movement, subtasks, labels, and comments |
+| `FEAT-003-FE-kanban-dnd.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Completed | Drag-and-drop Kanban board with `@dnd-kit` and optimistic updates |
+| `FEAT-003-FE-task-views.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Completed | List view, Calendar view, and Task detail modal drawer |
+| `FEAT-003-VERIFY-tasks.md` | VERIFY | P0 | Tasks & Views | `FEAT-003-FE-task-views.md` | Completed | Verification pass for Tasks & Multi-View UI |
 | `FEAT-004-BE-realtime.md` | BE | P0 | Real-Time Sync | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | Real-time channel auth route handler and token minting |
 | `FEAT-004-INT-realtime-sync.md` | INT | P0 | Real-Time Sync | `FEAT-004-BE-realtime.md`, `FEAT-003-BE-tasks.md` | Not Started | Task mutation event broadcast dispatchers and client sync hooks |
 | `FEAT-004-FE-presence-ui.md` | FE | P0 | Real-Time Sync | `FEAT-004-INT-realtime-sync.md` | Not Started | Live presence avatar stack and active card viewer badges |
