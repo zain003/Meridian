@@ -6,6 +6,8 @@ import { TaskListView } from "@/components/tasks/task-list-view";
 import { TaskCalendarView } from "@/components/tasks/task-calendar-view";
 import { TaskDetailModal } from "@/components/tasks/task-detail-modal";
 import type { TaskCardProps } from "@/components/tasks/task-card";
+import { usePresenceChannel } from "@/hooks/use-presence-channel";
+import { useBoardRealtimeSync } from "@/hooks/use-board-realtime";
 
 export interface ProjectBoardViewsProps {
   workspaceId: string;
@@ -30,6 +32,79 @@ export function ProjectBoardViews({
 }: ProjectBoardViewsProps) {
   const [columns, setColumns] = React.useState<ColumnData[]>(initialColumns);
   const [selectedTaskId, setSelectedTaskId] = React.useState<string | null>(null);
+
+  const { activeCardViewers, broadcastTaskView, broadcastTaskLeave } =
+    usePresenceChannel(workspaceId, boardId, currentUserId);
+
+  useBoardRealtimeSync({
+    boardId,
+    currentUserId,
+    onTaskCreated: (data) => {
+      if (!data || !data.id || !data.columnId) return;
+      setColumns((prev) =>
+        prev.map((col) => {
+          if (col.id === data.columnId) {
+            if (col.tasks.some((t) => t.id === data.id)) return col;
+            return {
+              ...col,
+              tasks: [
+                ...col.tasks,
+                {
+                  id: data.id as string,
+                  columnId: data.columnId as string,
+                  title: (data.title as string) || "Untitled Task",
+                  priority: (data.priority as TaskCardProps["task"]["priority"]) || "MEDIUM",
+                  order: (data.order as number) || col.tasks.length,
+                  dueDate: (data.dueDate as Date | string | null) || null,
+                },
+              ],
+            };
+          }
+          return col;
+        })
+      );
+    },
+    onTaskMoved: (payload) => {
+      const { taskId, destinationColumnId, columnId, newOrder, order } = payload;
+      const targetColId = destinationColumnId || columnId;
+      const targetOrder = newOrder ?? order ?? 0;
+      if (!targetColId) return;
+
+      setColumns((prev) => {
+        let taskItem: TaskCardProps["task"] | null = null;
+        prev.forEach((col) => {
+          const found = col.tasks.find((t) => t.id === taskId);
+          if (found) taskItem = { ...found, columnId: targetColId, order: targetOrder };
+        });
+
+        if (!taskItem) return prev;
+
+        return prev.map((col) => {
+          const filtered = col.tasks.filter((t) => t.id !== taskId);
+          if (col.id === targetColId) {
+            const nextTasks = [...filtered, taskItem!].sort((a, b) => a.order - b.order);
+            return { ...col, tasks: nextTasks };
+          }
+          return { ...col, tasks: filtered };
+        });
+      });
+    },
+    onTaskUpdated: (data) => {
+      if (!data || !data.taskId) return;
+      handleTaskUpdated({
+        id: data.taskId as string,
+        title: data.title as string | undefined,
+        description: data.description as string | null | undefined,
+        priority: data.priority as TaskCardProps["task"]["priority"] | undefined,
+        dueDate: data.dueDate ? new Date(data.dueDate as string) : undefined,
+        assigneeId: data.assigneeId as string | null | undefined,
+        columnId: data.columnId as string | undefined,
+      });
+    },
+    onTaskDeleted: ({ taskId }) => {
+      handleTaskDeleted(taskId);
+    },
+  });
 
   const [prevInitialColumns, setPrevInitialColumns] = React.useState<ColumnData[]>(initialColumns);
   if (initialColumns !== prevInitialColumns) {
@@ -113,6 +188,18 @@ export function ProjectBoardViews({
     return columns.map((c) => ({ id: c.id, name: c.name }));
   }, [columns]);
 
+  const handleOpenTask = (id: string) => {
+    setSelectedTaskId(id);
+    broadcastTaskView(id);
+  };
+
+  const handleCloseTask = () => {
+    if (selectedTaskId) {
+      broadcastTaskLeave(selectedTaskId);
+    }
+    setSelectedTaskId(null);
+  };
+
   return (
     <div className="h-full flex flex-col min-h-0">
       {currentView === "kanban" && (
@@ -121,8 +208,9 @@ export function ProjectBoardViews({
           projectId={projectId}
           boardId={boardId}
           initialColumns={columns}
+          cardViewers={activeCardViewers}
           canManage={canManage}
-          onTaskClick={(id) => setSelectedTaskId(id)}
+          onTaskClick={handleOpenTask}
         />
       )}
 
@@ -130,21 +218,21 @@ export function ProjectBoardViews({
         <TaskListView
           tasks={allTasks}
           columns={columnOptions}
-          onTaskClick={(id) => setSelectedTaskId(id)}
+          onTaskClick={handleOpenTask}
         />
       )}
 
       {currentView === "calendar" && (
         <TaskCalendarView
           tasks={allTasks}
-          onTaskClick={(id) => setSelectedTaskId(id)}
+          onTaskClick={handleOpenTask}
         />
       )}
 
       {/* Task Detail Modal Drawer */}
       <TaskDetailModal
         isOpen={Boolean(selectedTaskId)}
-        onClose={() => setSelectedTaskId(null)}
+        onClose={handleCloseTask}
         task={selectedTask}
         columns={columnOptions}
         members={members}

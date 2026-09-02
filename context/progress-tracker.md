@@ -29,20 +29,20 @@
 - [x] **FEAT-003-FE-kanban-dnd**: Drag-and-drop Kanban board interface (`components/boards/kanban-board.tsx`) powered by `@dnd-kit/core` and `@dnd-kit/sortable`, SortableContext column wrapper (`components/boards/kanban-column.tsx`), draggable task card with priority badges and Lucide icons (`components/tasks/task-card.tsx`), drag overlay preview (`components/tasks/task-drag-overlay.tsx`), inline quick task creation with React Hook Form + Zod (`components/tasks/quick-add-task.tsx`), optimistic reordering with error rollback, and Vitest component test suite (8/8 passing tests, 156/156 global).
 - [x] **FEAT-003-FE-task-views**: Dense structured list view table (`components/tasks/task-list-view.tsx`) with search filtering and sortable column headers, monthly calendar grid (`components/tasks/task-calendar-view.tsx`) with month navigation and unscheduled task drawer, 65/35 split Task Detail Modal (`components/tasks/task-detail-modal.tsx`) with tabbed markdown description editor, subtasks progress checklist (`components/tasks/task-subtasks.tsx`), real-time comments stream (`components/tasks/task-comments.tsx`), and Vitest component test suite (14/14 passing tests, 170/170 global).
 - [x] **FEAT-003-VERIFY-tasks**: Complete verification pass for Tasks & Multi-View UI with 69/69 passing tests across 7 feature test suites (170/170 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
+- [x] **FEAT-004-BE-realtime**: Server-side Pusher client singleton (`lib/pusher.ts`), presence and private channel authorization logic with PostgreSQL workspace membership enforcement, channel parsing schemas (`lib/validations/realtime.ts`), HTTP route handler (`app/api/realtime/auth/route.ts`), and Vitest unit test suite (16/16 passing tests, 186/186 global).
+- [x] **FEAT-004-INT-realtime-sync**: Task mutation event broadcasting dispatchers in `server/actions/tasks.ts` (`broadcastTaskMutation`), client-side board subscription hook `useBoardRealtimeSync`, and non-blocking event handling.
+- [x] **FEAT-004-FE-presence-ui**: Collaborative `PresenceAvatarStack` with overflow badge (`+N`) and tooltips, `TaskCardViewers` on task cards, `usePresenceChannel` hook tracking active workspace collaborators and card viewers, shadcn `Tooltip` primitive (`components/ui/tooltip.tsx`), and Vitest component test suite (9/9 passing tests, 195/195 global).
 
 ## In Progress
 
-- [ ] **Phase 3 (Week 5)**: `FEAT-004-BE-realtime` (Real-Time Sync channel authorization route handler and token minting).
+- [ ] **Phase 3 (Week 5)**: `FEAT-004-VERIFY-realtime` (Verification pass for Real-Time & Live Presence).
 
 ## Next Up
 
-1. **Phase 3 (Week 5)**: `FEAT-004-BE-realtime` (Real-Time Sync channel authorization route handler and token minting).
-2. **Phase 3 (Week 5)**: `FEAT-004-INT-realtime-sync` (Task mutation event broadcast dispatchers and client sync hooks).
-3. **Phase 3 (Week 5)**: `FEAT-004-FE-presence-ui` (Live presence avatar stack and active card viewer badges).
-4. **Phase 3 (Week 5)**: `FEAT-004-VERIFY-realtime` (Verification pass for Real-Time & Live Presence).
-5. **Phase 4 (Week 6)**: Rules-based automation engine (visual trigger/condition/action rule builder with React Hook Form, custom JSON rule evaluator, Upstash Redis queue worker, audit execution logs).
-5. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) and notification center (in-app + Resend email).
-6. **Phase 6 (Week 8)**: Team analytics dashboard (velocity, burndown, cycle time, workload charts via Recharts), Vitest & Playwright testing, deployment to Vercel.
+1. **Phase 3 (Week 5)**: `FEAT-004-VERIFY-realtime` (Verification pass for Real-Time & Live Presence).
+2. **Phase 4 (Week 6)**: Rules-based automation engine (visual trigger/condition/action rule builder with React Hook Form, custom JSON rule evaluator, Upstash Redis queue worker, audit execution logs).
+3. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) and notification center (in-app + Resend email).
+4. **Phase 6 (Week 8)**: Team analytics dashboard (velocity, burndown, cycle time, workload charts via Recharts), Vitest & Playwright testing, deployment to Vercel.
 
 ## Open Questions
 

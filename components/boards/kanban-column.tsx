@@ -9,6 +9,7 @@ import {
 import { BoardColumnHeader } from "@/components/boards/board-column-header";
 import { TaskCard, type TaskCardProps } from "@/components/tasks/task-card";
 import { QuickAddTask } from "@/components/tasks/quick-add-task";
+import type { RealtimePresenceUser } from "@/hooks/use-presence-channel";
 import { Inbox } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -21,6 +22,7 @@ export interface KanbanColumnProps {
     order: number;
   };
   tasks: TaskCardProps["task"][];
+  cardViewers?: Record<string, RealtimePresenceUser[]>;
   canManage?: boolean;
   onTaskCreated?: (task: {
     id: string;
@@ -37,6 +39,7 @@ export function KanbanColumn({
   projectId,
   column,
   tasks,
+  cardViewers,
   canManage = false,
   onTaskCreated,
   onTaskClick,
@@ -75,6 +78,7 @@ export function KanbanColumn({
             <TaskCard
               key={task.id}
               task={task}
+              viewers={cardViewers?.[task.id]}
               onClick={() => onTaskClick?.(task.id)}
             />
           ))}

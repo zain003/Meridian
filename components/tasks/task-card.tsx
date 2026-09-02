@@ -6,6 +6,8 @@ import { CSS } from "@dnd-kit/utilities";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Clock, CheckSquare, AlertCircle, ArrowUp, ArrowDown, Minus, GripVertical } from "lucide-react";
+import { TaskCardViewers } from "@/components/tasks/task-card-viewers";
+import type { RealtimePresenceUser } from "@/hooks/use-presence-channel";
 import { cn } from "@/lib/utils";
 
 export interface TaskItem {
@@ -50,6 +52,7 @@ export interface TaskItem {
 
 export interface TaskCardProps {
   task: TaskItem;
+  viewers?: RealtimePresenceUser[];
   isOverlay?: boolean;
   onClick?: () => void;
 }
@@ -77,7 +80,7 @@ const PRIORITY_CONFIG = {
   },
 };
 
-export function TaskCard({ task, isOverlay = false, onClick }: TaskCardProps) {
+export function TaskCard({ task, viewers, isOverlay = false, onClick }: TaskCardProps) {
   const {
     attributes,
     listeners,
@@ -154,8 +157,11 @@ export function TaskCard({ task, isOverlay = false, onClick }: TaskCardProps) {
           <span>{priorityInfo.label}</span>
         </Badge>
 
-        <div className="opacity-0 group-hover:opacity-100 transition-opacity text-zinc-500">
-          <GripVertical className="size-3.5" />
+        <div className="flex items-center gap-1.5">
+          {viewers && viewers.length > 0 && <TaskCardViewers viewers={viewers} />}
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity text-zinc-500">
+            <GripVertical className="size-3.5" />
+          </div>
         </div>
       </div>
 

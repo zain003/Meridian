@@ -22,6 +22,7 @@ import { TaskDragOverlay } from "@/components/tasks/task-drag-overlay";
 import { AddColumnButton } from "@/components/boards/add-column-button";
 import { moveTaskAction } from "@/server/actions/tasks";
 import type { TaskCardProps } from "@/components/tasks/task-card";
+import type { RealtimePresenceUser } from "@/hooks/use-presence-channel";
 
 export interface ColumnData {
   id: string;
@@ -35,6 +36,7 @@ export interface KanbanBoardProps {
   projectId: string;
   boardId?: string;
   initialColumns: ColumnData[];
+  cardViewers?: Record<string, RealtimePresenceUser[]>;
   canManage?: boolean;
   onTaskClick?: (taskId: string) => void;
 }
@@ -44,6 +46,7 @@ export function KanbanBoard({
   projectId,
   boardId,
   initialColumns,
+  cardViewers,
   canManage = false,
   onTaskClick,
 }: KanbanBoardProps) {
@@ -286,6 +289,7 @@ export function KanbanBoard({
               projectId={projectId}
               column={column}
               tasks={column.tasks}
+              cardViewers={cardViewers}
               canManage={canManage}
               onTaskCreated={handleTaskCreated}
               onTaskClick={onTaskClick}

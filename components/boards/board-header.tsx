@@ -14,6 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PresenceAvatarStack } from "@/components/workspace/presence-avatar-stack";
+import { usePresenceChannel, type RealtimePresenceUser } from "@/hooks/use-presence-channel";
 
 interface BoardHeaderProps {
   projectId: string;
@@ -24,19 +26,25 @@ interface BoardHeaderProps {
   currentView?: string;
   canManage?: boolean;
   onAddTask?: () => void;
+  presenceMembers?: RealtimePresenceUser[];
 }
 
 export function BoardHeader({
   projectName,
   projectKey,
   projectDescription,
+  workspaceId,
   currentView = "kanban",
   canManage = true,
   onAddTask,
+  presenceMembers: explicitPresenceMembers,
 }: BoardHeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const { activeMembers } = usePresenceChannel(workspaceId);
+  const presenceMembers = explicitPresenceMembers || activeMembers;
 
   const activeView = searchParams.get("view") || currentView;
 
@@ -70,7 +78,8 @@ export function BoardHeader({
         </div>
 
         {/* Action Controls */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <PresenceAvatarStack members={presenceMembers} />
           {canManage && (
             <Button
               onClick={onAddTask}

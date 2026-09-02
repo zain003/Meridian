@@ -2,6 +2,7 @@
 
 import { requireWorkspaceAccess } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
+import { broadcastTaskMutation } from "@/lib/realtime/broadcast";
 import {
   createTaskSchema,
   moveTaskSchema,
@@ -46,7 +47,7 @@ export async function createTaskAction(
   } = parsed.data;
 
   try {
-    await requireWorkspaceAccess(workspaceId, "MEMBER");
+    const accessContext = await requireWorkspaceAccess(workspaceId, "MEMBER");
 
     const project = await prisma.project.findFirst({
       where: { id: projectId, workspaceId },
@@ -68,6 +69,7 @@ export async function createTaskAction(
       select: {
         id: true,
         name: true,
+        boardId: true,
       },
     });
 
@@ -129,6 +131,24 @@ export async function createTaskAction(
       select: { id: true },
     });
 
+    // Broadcast creation to board channel asynchronously
+    broadcastTaskMutation({
+      eventType: "TASK_CREATED",
+      workspaceId,
+      projectId,
+      boardId: column?.boardId || "board-default",
+      taskId: task.id,
+      data: {
+        id: task.id,
+        columnId,
+        title: title.trim(),
+        priority: priority ?? "MEDIUM",
+        order: targetOrder,
+        dueDate: dueDate || null,
+      },
+      actorId: accessContext.user.id,
+    });
+
     return {
       success: true,
       data: { taskId: task.id },
@@ -176,6 +196,11 @@ export async function moveTaskAction(
         columnId: true,
         projectId: true,
         completedAt: true,
+        column: {
+          select: {
+            boardId: true,
+          },
+        },
         project: {
           select: {
             workspaceId: true,
@@ -191,7 +216,7 @@ export async function moveTaskAction(
       };
     }
 
-    await requireWorkspaceAccess(task.project.workspaceId, "MEMBER");
+    const accessContext = await requireWorkspaceAccess(task.project.workspaceId, "MEMBER");
 
     const destColumn = await prisma.column.findFirst({
       where: {
@@ -279,6 +304,22 @@ export async function moveTaskAction(
       }
     });
 
+    // Broadcast move event
+    broadcastTaskMutation({
+      eventType: "TASK_MOVED",
+      workspaceId: task.project.workspaceId,
+      projectId: task.projectId,
+      boardId: task?.column?.boardId || "board-default",
+      taskId,
+      data: {
+        taskId,
+        sourceColumnId,
+        destinationColumnId,
+        newOrder,
+      },
+      actorId: accessContext.user.id,
+    });
+
     return {
       success: true,
       data: undefined,
@@ -334,6 +375,11 @@ export async function updateTaskAction(
         columnId: true,
         projectId: true,
         completedAt: true,
+        column: {
+          select: {
+            boardId: true,
+          },
+        },
         project: {
           select: {
             workspaceId: true,
@@ -349,7 +395,7 @@ export async function updateTaskAction(
       };
     }
 
-    await requireWorkspaceAccess(task.project.workspaceId, "MEMBER");
+    const accessContext = await requireWorkspaceAccess(task.project.workspaceId, "MEMBER");
 
     if (assigneeId !== undefined && assigneeId !== null) {
       const assignee = await prisma.workspaceMember.findUnique({
@@ -400,6 +446,19 @@ export async function updateTaskAction(
       },
     });
 
+    // Broadcast update event
+    broadcastTaskMutation({
+      eventType: "TASK_UPDATED",
+      workspaceId: task.project.workspaceId,
+      projectId: task.projectId,
+      boardId: task?.column?.boardId || "board-default",
+      taskId,
+      data: {
+        ...parsed.data,
+      },
+      actorId: accessContext.user.id,
+    });
+
     return {
       success: true,
       data: undefined,
@@ -434,6 +493,12 @@ export async function deleteTaskAction(
       where: { id: taskId },
       select: {
         id: true,
+        projectId: true,
+        column: {
+          select: {
+            boardId: true,
+          },
+        },
         project: {
           select: {
             workspaceId: true,
@@ -449,10 +514,21 @@ export async function deleteTaskAction(
       };
     }
 
-    await requireWorkspaceAccess(task.project.workspaceId, "MEMBER");
+    const accessContext = await requireWorkspaceAccess(task.project.workspaceId, "MEMBER");
 
     await prisma.task.delete({
       where: { id: taskId },
+    });
+
+    // Broadcast delete event
+    broadcastTaskMutation({
+      eventType: "TASK_DELETED",
+      workspaceId: task.project.workspaceId,
+      projectId: task.projectId,
+      boardId: task?.column?.boardId || "board-default",
+      taskId,
+      data: { taskId },
+      actorId: accessContext.user.id,
     });
 
     return {

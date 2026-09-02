@@ -8,7 +8,7 @@ Running catalog of all test execution reports across every implemented feature a
 
 | Total Test Suites | Total Tests | Passed | Failed | TypeScript Strict Mode | ESLint Cleanliness | Overall Status |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **19 Suites** | **170 Tests** | **170** | **0** | ✅ **0 Errors** | ✅ **0 Warnings** | ✅ **100% PASSED** |
+| **22 Suites** | **201 Tests** | **201** | **0** | ✅ **0 Errors** | ✅ **0 Warnings** | ✅ **100% PASSED** |
 
 ---
 
@@ -19,7 +19,9 @@ Running catalog of all test execution reports across every implemented feature a
 | **FEAT-001** | Auth & Multi-Tenant Workspaces | [`FEAT-001-auth-workspace-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-001-auth-workspace-report.md) | 42 | ✅ PASS | 2026-09-02 |
 | **FEAT-002** | Projects, Boards & Columns | [`FEAT-002-VERIFY-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-002-VERIFY-projects-boards-report.md) | 59 | ✅ PASS | 2026-09-02 |
 | **FEAT-003** | Tasks & Multi-View UI (BE + FE + Views) | [`FEAT-003-VERIFY-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-003-VERIFY-tasks-report.md) | 69 | ✅ PASS | 2026-09-02 |
-| **FEAT-004** | Real-Time Sync & Live Presence | *Pending implementation* | — | ⏳ Upcoming | — |
+| **FEAT-004-BE** | Real-Time Channel Auth & Token Minting | [`FEAT-004-BE-realtime-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-004-BE-realtime-report.md) | 16 | ✅ PASS | 2026-09-02 |
+| **FEAT-004-INT** | Real-Time Sync & Event Subscriptions | [`FEAT-004-INT-realtime-sync-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-004-INT-realtime-sync-report.md) | 6 | ✅ PASS | 2026-09-02 |
+| **FEAT-004-FE** | Presence UI & State Synchronization | [`FEAT-004-FE-presence-ui-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-004-FE-presence-ui-report.md) | 9 | ✅ PASS | 2026-09-02 |
 | **FEAT-005** | Workflow Automation Engine | *Pending implementation* | — | ⏳ Upcoming | — |
 | **FEAT-006** | In-App & Email Notifications | *Pending implementation* | — | ⏳ Upcoming | — |
 | **FEAT-007** | Stripe Subscription Billing | *Pending implementation* | — | ⏳ Upcoming | — |

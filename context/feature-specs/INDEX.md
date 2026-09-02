@@ -19,9 +19,9 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-003-FE-kanban-dnd.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Completed | Drag-and-drop Kanban board with `@dnd-kit` and optimistic updates |
 | `FEAT-003-FE-task-views.md` | FE | P0 | Tasks & Views | `FEAT-003-BE-tasks.md` | Completed | List view, Calendar view, and Task detail modal drawer |
 | `FEAT-003-VERIFY-tasks.md` | VERIFY | P0 | Tasks & Views | `FEAT-003-FE-task-views.md` | Completed | Verification pass for Tasks & Multi-View UI |
-| `FEAT-004-BE-realtime.md` | BE | P0 | Real-Time Sync | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | Real-time channel auth route handler and token minting |
-| `FEAT-004-INT-realtime-sync.md` | INT | P0 | Real-Time Sync | `FEAT-004-BE-realtime.md`, `FEAT-003-BE-tasks.md` | Not Started | Task mutation event broadcast dispatchers and client sync hooks |
-| `FEAT-004-FE-presence-ui.md` | FE | P0 | Real-Time Sync | `FEAT-004-INT-realtime-sync.md` | Not Started | Live presence avatar stack and active card viewer badges |
+| `FEAT-004-BE-realtime.md` | BE | P0 | Real-Time Sync | `FEAT-001-VERIFY-auth-workspace.md` | Completed | Real-time channel auth route handler and token minting |
+| `FEAT-004-INT-realtime-sync.md` | INT | P0 | Real-Time Sync | `FEAT-004-BE-realtime.md`, `FEAT-003-BE-tasks.md` | Completed | Task mutation event broadcast dispatchers and client sync hooks |
+| `FEAT-004-FE-presence-ui.md` | FE | P0 | Real-Time Sync | `FEAT-004-INT-realtime-sync.md` | Completed | Live presence avatar stack and active card viewer badges |
 | `FEAT-004-VERIFY-realtime.md` | VERIFY | P0 | Real-Time Sync | `FEAT-004-FE-presence-ui.md` | Not Started | Verification pass for Real-Time & Live Presence |
 | `FEAT-005-BE-rule-engine.md` | BE | P0 | Automation Engine | `FEAT-003-BE-tasks.md` | Not Started | JSON rule parser, condition evaluator, action executor, loop guard |
 | `FEAT-005-INT-queue-worker.md` | INT | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Not Started | Upstash Redis queue producer/consumer and execution audit logger |
