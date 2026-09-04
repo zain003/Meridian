@@ -36,17 +36,20 @@
 - [x] **FEAT-005-INT-queue-worker**: Upstash Redis client singleton (`lib/redis.ts`), background queue producer (`lib/automation/queue.ts`), worker rule matcher (`lib/automation/worker.ts`), task mutation enqueue triggers (`server/actions/tasks.ts`), and cron queue worker API route (`app/api/cron/automations/route.ts`).
 - [x] **FEAT-005-FE-rule-builder**: Visual block-based rule builder dialog (`components/automation/rule-builder-dialog.tsx`) with 3-step connected pipeline (TriggerNode, ConditionNode with dynamic filters, ActionNode), `RuleList` table with optimistic active switch toggles, `ExecutionLogDrawer` with status badges and formatted JSON payloads, `Switch` primitive (`components/ui/switch.tsx`), Next.js 16 App Router automation page (`app/(dashboard)/[workspaceId]/automation/page.tsx`), and Vitest component test suite (9/9 passing tests, 227/227 global).
 - [x] **FEAT-005-VERIFY-automation**: Complete verification pass for Automation Engine with 30/30 passing tests across 3 feature test suites (231/231 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
+- [x] **FEAT-006-BE-notifications**: In-app notification persistence service (`lib/notifications/service.ts`), Resend SDK transactional email client (`lib/email/resend.ts`) with Quiet Luxury HTML templates and resilient error handling, notification Server Actions with RBAC (`server/actions/notifications.ts`), task assignment and comment mention dispatch integrations, and Vitest test suite (27/27 passing tests, 258/258 global).
+- [x] **FEAT-006-FE-notification-center**: Top navbar notification bell (`components/workspace/notification-bell.tsx`) with live unread badge counter (`3`, `99+`), dropdown popover (`components/notifications/notification-popover.tsx`) with scrollable list (`components/ui/scroll-area.tsx`), entity icon badges (`components/notifications/notification-item.tsx`), relative time formatter, "Mark all as read" optimistic execution, empty state illustration, and Vitest component test suite (10/10 passing tests, 268/268 global).
+- [x] **FEAT-006-VERIFY-notifications**: Complete verification pass for In-App & Email Notifications with 37/37 passing tests across 3 feature test suites (268/268 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
 
 ## In Progress
 
-- [ ] **Phase 5 (Week 7)**: `FEAT-006-BE-notifications` (In-app notification CRUD and Resend transactional email dispatcher).
+- [ ] **Phase 5 (Week 7)**: `FEAT-007-BE-stripe-billing` (Stripe Customer creation, Checkout sessions, and Customer Portal generator).
 
 ## Next Up
 
-1. **Phase 5 (Week 7)**: `FEAT-006-BE-notifications` (In-app notification CRUD and Resend transactional email dispatcher).
-2. **Phase 5 (Week 7)**: `FEAT-006-FE-notification-center` (Notification bell, unread badge, and notification popover drawer).
-3. **Phase 5 (Week 7)**: `FEAT-006-VERIFY-notifications` (Verification pass for Notifications).
-4. **Phase 5 (Week 7)**: Stripe subscription billing (Free vs Pro tiers, Checkout, Customer Portal, Webhook sync) (`FEAT-007`).
+1. **Phase 5 (Week 7)**: `FEAT-007-BE-stripe-billing` (Stripe Customer creation, Checkout sessions, and Customer Portal generator).
+2. **Phase 5 (Week 7)**: `FEAT-007-INT-stripe-webhooks` (Stripe webhook route handler with signature verification and tier sync).
+3. **Phase 5 (Week 7)**: `FEAT-007-FE-billing-portal` (Billing settings view with tier comparison card and upgrade triggers).
+4. **Phase 5 (Week 7)**: `FEAT-007-VERIFY-billing` (Verification pass for Stripe Billing).
 5. **Phase 6 (Week 8)**: Team analytics dashboard (velocity, burndown, cycle time, workload charts via Recharts), Vitest & Playwright testing, deployment to Vercel.
 
 ## Open Questions

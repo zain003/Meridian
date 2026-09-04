@@ -2,6 +2,7 @@
 
 import { requireWorkspaceAccess, hasMinimumRole } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
+import { createNotification } from "@/lib/notifications/service";
 import {
   createCommentSchema,
   deleteCommentSchema,
@@ -36,6 +37,8 @@ export async function addCommentAction(
       where: { id: taskId },
       select: {
         id: true,
+        title: true,
+        assigneeId: true,
         project: {
           select: {
             workspaceId: true,
@@ -64,6 +67,78 @@ export async function addCommentAction(
       },
       select: { id: true },
     });
+
+    const workspaceId = task.project.workspaceId;
+    const authorName = user.name || user.email.split("@")[0];
+    const previewContent = parsed.data.content.trim().slice(0, 100);
+    const notifiedUserIds = new Set<string>();
+
+    // 1. Notify task assignee if someone else comments on their task
+    if (task.assigneeId && task.assigneeId !== user.id) {
+      notifiedUserIds.add(task.assigneeId);
+      void createNotification(
+        {
+          workspaceId,
+          userId: task.assigneeId,
+          title: `New Comment on "${task.title}"`,
+          message: `${authorName} commented: "${previewContent}${
+            parsed.data.content.length > 100 ? "..." : ""
+          }"`,
+          entityType: "COMMENT",
+          entityId: task.id,
+          sendEmail: true,
+        },
+        user.id
+      ).catch((err) => {
+        console.error("Failed to dispatch comment notification to assignee:", err);
+      });
+    }
+
+    // 2. Parse @mentions in comment body and notify mentioned workspace members
+    const mentionMatches = parsed.data.content.match(/@([a-zA-Z0-9._-]+)/g);
+    if (mentionMatches && mentionMatches.length > 0) {
+      const handles = Array.from(
+        new Set(mentionMatches.map((m) => m.slice(1).toLowerCase()))
+      );
+
+      // Look up workspace members matching username or email prefix
+      const matchingMembers = await prisma.workspaceMember.findMany({
+        where: {
+          workspaceId,
+          user: {
+            OR: handles.map((handle) => ({
+              OR: [
+                { email: { startsWith: handle, mode: "insensitive" } },
+                { name: { contains: handle, mode: "insensitive" } },
+              ],
+            })),
+          },
+        },
+        select: { userId: true },
+      });
+
+      for (const member of matchingMembers) {
+        if (member.userId !== user.id && !notifiedUserIds.has(member.userId)) {
+          notifiedUserIds.add(member.userId);
+          void createNotification(
+            {
+              workspaceId,
+              userId: member.userId,
+              title: `Mentioned in "${task.title}"`,
+              message: `${authorName} mentioned you: "${previewContent}${
+                parsed.data.content.length > 100 ? "..." : ""
+              }"`,
+              entityType: "COMMENT",
+              entityId: task.id,
+              sendEmail: true,
+            },
+            user.id
+          ).catch((err) => {
+            console.error("Failed to dispatch mention notification:", err);
+          });
+        }
+      }
+    }
 
     return {
       success: true,

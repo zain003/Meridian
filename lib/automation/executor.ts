@@ -1,6 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import type { RuleAction } from "@/lib/validations/automation";
 import type { TaskPriority } from "@prisma/client";
+import {
+  sendTransactionalEmail,
+  renderNotificationEmailHtml,
+} from "@/lib/email/resend";
 
 export const MAX_RECURSION_DEPTH = 3;
 
@@ -170,8 +174,26 @@ export async function executeRuleActions(
         }
 
         case "SEND_EMAIL": {
-          // Email dispatch intent recorded in execution log
-          executedActions.push("SEND_EMAIL:QUEUED");
+          const to = (action.payload.to || action.payload.email) as string | undefined;
+          const subject =
+            (action.payload.subject as string) || "Meridian Automation Alert";
+          const body =
+            (action.payload.body ||
+              action.payload.message ||
+              "An automation rule has executed in your workspace.") as string;
+
+          if (to) {
+            void sendTransactionalEmail(
+              to,
+              subject,
+              renderNotificationEmailHtml({ title: subject, message: body })
+            ).catch((err) => {
+              console.error("[Automation Executor] Email dispatch failed:", err);
+            });
+            executedActions.push(`SEND_EMAIL:${to}`);
+          } else {
+            executedActions.push("SEND_EMAIL:QUEUED");
+          }
           break;
         }
       }

@@ -27,9 +27,9 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-005-INT-queue-worker.md` | INT | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Completed | Upstash Redis queue producer/consumer and execution audit logger |
 | `FEAT-005-FE-rule-builder.md` | FE | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Completed | Visual block-based rule builder canvas and audit execution log list |
 | `FEAT-005-VERIFY-automation.md` | VERIFY | P0 | Automation Engine | `FEAT-005-FE-rule-builder.md` | Completed | Verification pass for Automation Engine |
-| `FEAT-006-BE-notifications.md` | BE | P1 | Notifications | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | In-app notification CRUD and Resend transactional email dispatcher |
-| `FEAT-006-FE-notification-center.md` | FE | P1 | Notifications | `FEAT-006-BE-notifications.md` | Not Started | Notification bell, unread badge, and notification popover drawer |
-| `FEAT-006-VERIFY-notifications.md` | VERIFY | P1 | Notifications | `FEAT-006-FE-notification-center.md` | Not Started | Verification pass for Notifications |
+| `FEAT-006-BE-notifications.md` | BE | P1 | Notifications | `FEAT-001-VERIFY-auth-workspace.md` | Completed | In-app notification CRUD and Resend transactional email dispatcher |
+| `FEAT-006-FE-notification-center.md` | FE | P1 | Notifications | `FEAT-006-BE-notifications.md` | Completed | Notification bell, unread badge, and notification popover drawer |
+| `FEAT-006-VERIFY-notifications.md` | VERIFY | P1 | Notifications | `FEAT-006-FE-notification-center.md` | Completed | Verification pass for Notifications |
 | `FEAT-007-BE-stripe-billing.md` | BE | P1 | Billing & Stripe | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | Stripe Customer creation, Checkout session, and Customer Portal generator |
 | `FEAT-007-INT-stripe-webhooks.md` | INT | P1 | Billing & Stripe | `FEAT-007-BE-stripe-billing.md` | Not Started | Stripe webhook route handler with signature verification and tier sync |
 | `FEAT-007-FE-billing-portal.md` | FE | P1 | Billing & Stripe | `FEAT-007-BE-stripe-billing.md` | Not Started | Billing settings view with tier comparison card and upgrade triggers |

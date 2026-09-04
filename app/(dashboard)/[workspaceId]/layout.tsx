@@ -4,9 +4,7 @@ import { getAuthSession } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { requireWorkspaceAccess } from "@/lib/rbac";
 import { Sidebar } from "@/components/workspace/sidebar";
-import { InviteMemberDialog } from "@/components/workspace/invite-member-dialog";
-import { Button } from "@/components/ui/button";
-import { Bell } from "lucide-react";
+import { TopNavbar } from "@/components/workspace/top-navbar";
 import { signOut } from "@/auth";
 
 interface DashboardLayoutProps {
@@ -82,32 +80,7 @@ export default async function DashboardLayout({
 
       {/* Main Content Viewport with Sticky Glass Topbar */}
       <div className="flex flex-1 flex-col pl-60">
-        {/* Sticky 56px Topbar */}
-        <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-zinc-800/60 bg-[#09090b]/80 px-6 backdrop-blur-md">
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span className="text-foreground font-medium">{workspace.name}</span>
-              <span>/</span>
-              <span className="text-zinc-500 font-mono">/{workspace.slug}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3">
-            <InviteMemberDialog
-              workspaceId={workspace.id}
-              workspaceName={workspace.name}
-              inviteCode={workspace.inviteCode}
-            />
-
-            <Button
-              variant="ghost"
-              size="icon"
-              className="size-8 rounded-md text-muted-foreground hover:text-foreground hover:bg-zinc-800"
-            >
-              <Bell className="size-4" />
-            </Button>
-          </div>
-        </header>
+        <TopNavbar workspace={workspace} />
 
         {/* Viewport Content */}
         <main className="flex-1 p-6">{children}</main>

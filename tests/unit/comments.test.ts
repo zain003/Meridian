@@ -14,6 +14,7 @@ vi.mock("@/lib/prisma", () => ({
   prisma: {
     workspaceMember: {
       findUnique: vi.fn(),
+      findMany: vi.fn().mockResolvedValue([]),
     },
     task: {
       findUnique: vi.fn(),
@@ -22,6 +23,12 @@ vi.mock("@/lib/prisma", () => ({
       findUnique: vi.fn(),
       create: vi.fn(),
       delete: vi.fn(),
+    },
+    user: {
+      findUnique: vi.fn().mockResolvedValue(null),
+    },
+    notification: {
+      create: vi.fn().mockResolvedValue({ id: "notif-comment-1" }),
     },
   },
 }));

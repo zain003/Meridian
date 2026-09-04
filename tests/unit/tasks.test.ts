@@ -35,6 +35,12 @@ vi.mock("@/lib/prisma", () => ({
       updateMany: vi.fn(),
       delete: vi.fn(),
     },
+    user: {
+      findUnique: vi.fn().mockResolvedValue(null),
+    },
+    notification: {
+      create: vi.fn().mockResolvedValue({ id: "notif-task-1" }),
+    },
     $transaction: vi.fn(),
   },
 }));

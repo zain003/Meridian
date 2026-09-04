@@ -4,6 +4,7 @@ import { requireWorkspaceAccess } from "@/lib/rbac";
 import { prisma } from "@/lib/prisma";
 import { broadcastTaskMutation } from "@/lib/realtime/broadcast";
 import { enqueueAutomationJob } from "@/lib/automation/queue";
+import { createNotification } from "@/lib/notifications/service";
 import {
   createTaskSchema,
   moveTaskSchema,
@@ -167,6 +168,24 @@ export async function createTaskAction(
         assigneeId: assigneeId || null,
       },
     });
+
+    // Dispatch in-app and email notification to assignee if assigned
+    if (assigneeId && assigneeId !== accessContext.user.id) {
+      void createNotification(
+        {
+          workspaceId,
+          userId: assigneeId,
+          title: "New Task Assigned",
+          message: `You were assigned to task "${title.trim()}".`,
+          entityType: "TASK",
+          entityId: task.id,
+          sendEmail: true,
+        },
+        accessContext.user.id
+      ).catch((err) => {
+        console.error("Failed to dispatch task assignment notification:", err);
+      });
+    }
 
     return {
       success: true,
@@ -404,6 +423,8 @@ export async function updateTaskAction(
       where: { id: taskId },
       select: {
         id: true,
+        title: true,
+        assigneeId: true,
         columnId: true,
         projectId: true,
         completedAt: true,
@@ -514,6 +535,27 @@ export async function updateTaskAction(
         triggerType: "TASK_STATUS_CHANGED",
         taskId,
         newData: { id: taskId, columnId },
+      });
+    }
+
+    if (
+      assigneeId &&
+      assigneeId !== accessContext.user.id &&
+      assigneeId !== task.assigneeId
+    ) {
+      void createNotification(
+        {
+          workspaceId: task.project.workspaceId,
+          userId: assigneeId,
+          title: "Task Assigned",
+          message: `You were assigned to task "${title?.trim() || task.title}".`,
+          entityType: "TASK",
+          entityId: taskId,
+          sendEmail: true,
+        },
+        accessContext.user.id
+      ).catch((err) => {
+        console.error("Failed to dispatch task assignment notification:", err);
       });
     }
 
