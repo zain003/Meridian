@@ -8,7 +8,7 @@ Running catalog of all test execution reports across every implemented feature a
 
 | Total Test Suites | Total Tests | Passed | Failed | TypeScript Strict Mode | ESLint Cleanliness | Overall Status |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **28 Suites** | **268 Tests** | **268** | **0** | ✅ **0 Errors** | ✅ **0 Warnings** | ✅ **100% PASSED** |
+| **32 Suites** | **307 Tests** | **307** | **0** | ✅ **0 Errors** | ✅ **0 Warnings** | ✅ **100% PASSED** |
 
 ---
 
@@ -29,7 +29,10 @@ Running catalog of all test execution reports across every implemented feature a
 | **FEAT-006-BE** | In-App & Email Notifications | [`FEAT-006-BE-notifications-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-006-BE-notifications-report.md) | 27 | ✅ PASS | 2026-09-04 |
 | **FEAT-006-FE** | Notification Center & Popover UI | [`FEAT-006-FE-notification-center-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-006-FE-notification-center-report.md) | 10 | ✅ PASS | 2026-09-04 |
 | **FEAT-006-VERIFY** | Notification Subsystem Verification Pass | [`FEAT-006-VERIFY-notifications-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-006-VERIFY-notifications-report.md) | 37 | ✅ PASS | 2026-09-04 |
-| **FEAT-007** | Stripe Subscription Billing | *Pending implementation* | — | ⏳ Upcoming | — |
+| **FEAT-007-BE** | Stripe Customer Creation & Sessions | [`FEAT-007-BE-stripe-billing-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-007-BE-stripe-billing-report.md) | 20 | ✅ PASS | 2026-09-05 |
+| **FEAT-007-INT** | Stripe Webhook Route & Subscription Sync | [`FEAT-007-INT-stripe-webhooks-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-007-INT-stripe-webhooks-report.md) | 10 | ✅ PASS | 2026-09-05 |
+| **FEAT-007-FE** | Billing Settings & Plan Comparison UI | [`FEAT-007-FE-billing-portal-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-007-FE-billing-portal-report.md) | 9 | ✅ PASS | 2026-09-05 |
+| **FEAT-007-VERIFY** | Stripe Billing Subsystem Verification Pass | [`FEAT-007-VERIFY-billing-report.md`](file:///c:/Users/zaina/Desktop/meridian/test-reports/FEAT-007-VERIFY-billing-report.md) | 39 | ✅ PASS | 2026-09-05 |
 | **FEAT-008** | Team Analytics Dashboard | *Pending implementation* | — | ⏳ Upcoming | — |
 
 ---

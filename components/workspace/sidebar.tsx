@@ -12,6 +12,7 @@ import {
   FolderKanban,
   Plus,
   LogOut,
+  CreditCard,
 } from "lucide-react";
 import { WorkspaceSwitcher } from "@/components/workspace/workspace-switcher";
 import { CreateProjectDialog } from "@/components/projects/create-project-dialog";
@@ -86,6 +87,12 @@ export function Sidebar({
       href: `/${workspace.id}/settings/members`,
       icon: Users,
       active: pathname.startsWith(`/${workspace.id}/settings/members`),
+    },
+    {
+      label: "Billing & Plans",
+      href: `/${workspace.id}/settings/billing`,
+      icon: CreditCard,
+      active: pathname.startsWith(`/${workspace.id}/settings/billing`),
     },
   ];
 

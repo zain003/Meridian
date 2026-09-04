@@ -39,18 +39,21 @@
 - [x] **FEAT-006-BE-notifications**: In-app notification persistence service (`lib/notifications/service.ts`), Resend SDK transactional email client (`lib/email/resend.ts`) with Quiet Luxury HTML templates and resilient error handling, notification Server Actions with RBAC (`server/actions/notifications.ts`), task assignment and comment mention dispatch integrations, and Vitest test suite (27/27 passing tests, 258/258 global).
 - [x] **FEAT-006-FE-notification-center**: Top navbar notification bell (`components/workspace/notification-bell.tsx`) with live unread badge counter (`3`, `99+`), dropdown popover (`components/notifications/notification-popover.tsx`) with scrollable list (`components/ui/scroll-area.tsx`), entity icon badges (`components/notifications/notification-item.tsx`), relative time formatter, "Mark all as read" optimistic execution, empty state illustration, and Vitest component test suite (10/10 passing tests, 268/268 global).
 - [x] **FEAT-006-VERIFY-notifications**: Complete verification pass for In-App & Email Notifications with 37/37 passing tests across 3 feature test suites (268/268 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
+- [x] **FEAT-007-BE-stripe-billing**: Stripe SDK singleton (`lib/stripe.ts`), automatic Stripe Customer creation & DB sync (`getOrCreateStripeCustomer`), Stripe Checkout session generation for Pro upgrades with metadata (`createStripeCheckoutSessionAction`), Stripe Customer Portal generator (`createStripeCustomerPortalAction`), workspace subscription fetch (`getWorkspaceSubscriptionAction`), Owner RBAC checks, Zod validations (`lib/validations/billing.ts`), and Vitest test suite (20/20 passing tests, 288/288 global).
+- [x] **FEAT-007-FE-billing-portal**: Billing & subscription settings page (`app/(dashboard)/[workspaceId]/settings/billing/page.tsx`), Free vs Pro plan comparison card (`components/billing/pricing-tier-card.tsx`), current subscription status card with Customer Portal trigger & past due alert (`components/billing/subscription-status-card.tsx`), sidebar navigation item (`components/workspace/sidebar.tsx`), and Vitest component test suite (9/9 passing tests, 297/297 global).
+- [x] **FEAT-007-INT-stripe-webhooks**: Stripe Webhook HTTP Route Handler (`app/api/webhooks/stripe/route.ts`), raw cryptographic signature verification (`stripe.webhooks.constructEvent`), modular lifecycle event handlers (`lib/stripe/webhook-handlers.ts`) for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`, and Vitest integration test suite (10/10 passing tests, 307/307 global).
+- [x] **FEAT-007-VERIFY-billing**: Complete verification pass for Stripe Subscription Billing with 39/39 passing tests across 4 feature test suites (307/307 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
 
 ## In Progress
 
-- [ ] **Phase 5 (Week 7)**: `FEAT-007-BE-stripe-billing` (Stripe Customer creation, Checkout sessions, and Customer Portal generator).
+- [ ] **Phase 6 (Week 8)**: `FEAT-008-BE-analytics` (Analytics aggregation engine for sprint velocity, burndown, cycle time, and team workload).
 
 ## Next Up
 
-1. **Phase 5 (Week 7)**: `FEAT-007-BE-stripe-billing` (Stripe Customer creation, Checkout sessions, and Customer Portal generator).
-2. **Phase 5 (Week 7)**: `FEAT-007-INT-stripe-webhooks` (Stripe webhook route handler with signature verification and tier sync).
-3. **Phase 5 (Week 7)**: `FEAT-007-FE-billing-portal` (Billing settings view with tier comparison card and upgrade triggers).
-4. **Phase 5 (Week 7)**: `FEAT-007-VERIFY-billing` (Verification pass for Stripe Billing).
-5. **Phase 6 (Week 8)**: Team analytics dashboard (velocity, burndown, cycle time, workload charts via Recharts), Vitest & Playwright testing, deployment to Vercel.
+1. **Phase 6 (Week 8)**: `FEAT-008-BE-analytics` (Analytics aggregation engine for sprint velocity, burndown, cycle time, and team workload).
+2. **Phase 6 (Week 8)**: `FEAT-008-FE-analytics-charts` (Team analytics dashboard with Recharts visualizations).
+3. **Phase 6 (Week 8)**: `FEAT-008-VERIFY-analytics` (Verification pass for Team Analytics).
+4. **Phase 7 (Week 8)**: End-to-end browser testing with Playwright, performance tuning, and Vercel deployment.
 
 ## Open Questions
 
