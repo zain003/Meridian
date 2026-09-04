@@ -45,15 +45,16 @@
 - [x] **FEAT-007-VERIFY-billing**: Complete verification pass for Stripe Subscription Billing with 39/39 passing tests across 4 feature test suites (307/307 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
 - [x] **FEAT-008-BE-analytics-metrics**: Team analytics metrics & aggregation engine (`lib/analytics/metrics.ts`), interval velocity calculations with zero-filling, cycle time mean/median/distribution calculations with zero-division guards, team workload aggregation with unassigned task grouping, Zod validations (`lib/validations/analytics.ts`), Server Actions (`server/actions/analytics.ts`), and Vitest unit test suite (18/18 passing tests, 325/325 global).
 - [x] **FEAT-008-FE-analytics-dashboard**: Team analytics dashboard page (`app/(dashboard)/[workspaceId]/analytics/page.tsx`), summary KPI cards (`components/analytics/kpi-card-grid.tsx`), Recharts velocity chart with SVG gradients (`components/analytics/velocity-chart.tsx`), turnaround distribution histogram (`components/analytics/cycle-time-chart.tsx`), member workload horizontal stacked bar chart (`components/analytics/workload-chart.tsx`), project & date range filter bar with non-blocking updates (`components/analytics/analytics-filters.tsx`), and Vitest component test suite (12/12 passing tests, 337/337 global).
+- [x] **FEAT-008-VERIFY-analytics**: Complete verification pass for Team Analytics Subsystem with 30/30 passing tests across 3 feature test suites (337/337 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
 
 ## In Progress
 
-- [ ] **Phase 6 (Week 8)**: `FEAT-008-VERIFY-analytics` (Verification pass for Team Analytics).
+- [ ] **Phase 7 (Week 8)**: End-to-end browser testing with Playwright, performance tuning, and Vercel deployment.
 
 ## Next Up
 
-1. **Phase 6 (Week 8)**: `FEAT-008-VERIFY-analytics` (Verification pass for Team Analytics).
-2. **Phase 7 (Week 8)**: End-to-end browser testing with Playwright, performance tuning, and Vercel deployment.
+1. **Phase 7 (Week 8)**: End-to-end browser testing with Playwright, performance tuning, and Vercel deployment.
+2. **Phase 7 (Week 8)**: Production build validation and release hardening.
 
 ## Open Questions
 

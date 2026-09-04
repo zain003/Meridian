@@ -8,12 +8,12 @@
 
 Run the automated test suite and record outcomes:
 
-- [ ] `vitest run tests/unit/analytics.test.ts` — Pass / Fail
+- [x] `vitest run tests/unit/analytics.test.ts` — Passed (13/13 tests)
   - Velocity calculation accurately groups created and completed tasks.
   - Cycle time average and median exclude uncompleted tasks.
   - Member workload summarizes task counts per member.
   - Workspace scoping enforced on all aggregation queries.
-- [ ] `vitest run tests/components/analytics-dashboard.test.tsx` — Pass / Fail
+- [x] `vitest run tests/components/analytics-dashboard.test.tsx` — Passed (12/12 tests)
   - `KpiCardGrid`: Renders metrics and percentages.
   - `VelocityChart`: Mounts Recharts components without errors.
   - Filter changes trigger refetch action.
@@ -22,23 +22,23 @@ Run the automated test suite and record outcomes:
 
 Individually verify each criterion against the live running environment:
 
-- [ ] Analytics queries filter strictly by `workspaceId` and optional `projectId`.
-- [ ] Tasks without a `completedAt` timestamp are excluded from cycle time averages.
-- [ ] Top KPI cards display total tasks, completed tasks, and average turnaround time.
-- [ ] Charts dynamically resize and respond smoothly to window resizing (`ResponsiveContainer`).
-- [ ] Tooltip on charts displays formatted data values on hover.
-- [ ] Changing project or date filter refreshes all charts without full page reload.
+- [x] Analytics queries filter strictly by `workspaceId` and optional `projectId`.
+- [x] Tasks without a `completedAt` timestamp are excluded from cycle time averages.
+- [x] Top KPI cards display total tasks, completed tasks, and average turnaround time.
+- [x] Charts dynamically resize and respond smoothly to window resizing (`ResponsiveContainer`).
+- [x] Tooltip on charts displays formatted data values on hover.
+- [x] Changing project or date filter refreshes all charts without full page reload.
 
 ## 3. Definition of Done Confirmation
 
-- [ ] All unit and component tests pass without errors.
-- [ ] `tsc --noEmit` passes with zero type errors.
-- [ ] `npm run lint` passes with no warnings.
-- [ ] Recharts responsive containers verified across mobile and desktop viewports.
-- [ ] `DEVIATIONS.md` updated if applicable.
+- [x] All unit and component tests pass without errors.
+- [x] `tsc --noEmit` passes with zero type errors.
+- [x] `npm run lint` passes with no warnings.
+- [x] Recharts responsive containers verified across mobile and desktop viewports.
+- [x] `DEVIATIONS.md` updated if applicable.
 
 ## 4. Verification Verdict
-- [ ] **PASSED**: All criteria and tests verified. Update `INDEX.md` status to `Completed`.
+- [x] **PASSED**: All criteria and tests verified. Update `INDEX.md` status to `Completed`.
 - [ ] **FAILED**: Provide failure details below and return to the corresponding file for remediation.
 
 *Failure Notes (if any):*

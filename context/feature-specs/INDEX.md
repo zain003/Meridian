@@ -36,4 +36,4 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-007-VERIFY-billing.md` | VERIFY | P1 | Billing & Stripe | `FEAT-007-FE-billing-portal.md` | Completed | Verification pass for Stripe Billing |
 | `FEAT-008-BE-analytics-metrics.md` | BE | P1 | Analytics Dashboard | `FEAT-003-VERIFY-tasks.md` | Completed | Database aggregation queries for velocity, burndown, cycle time, workload |
 | `FEAT-008-FE-analytics-dashboard.md` | FE | P1 | Analytics Dashboard | `FEAT-008-BE-analytics-metrics.md` | Completed | Analytics dashboard page with Recharts charts and date filter controls |
-| `FEAT-008-VERIFY-analytics.md` | VERIFY | P1 | Analytics Dashboard | `FEAT-008-FE-analytics-dashboard.md` | Not Started | Verification pass for Analytics Dashboard |
+| `FEAT-008-VERIFY-analytics.md` | VERIFY | P1 | Analytics Dashboard | `FEAT-008-FE-analytics-dashboard.md` | Completed | Verification pass for Analytics Dashboard |
