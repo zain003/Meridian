@@ -43,17 +43,17 @@
 - [x] **FEAT-007-FE-billing-portal**: Billing & subscription settings page (`app/(dashboard)/[workspaceId]/settings/billing/page.tsx`), Free vs Pro plan comparison card (`components/billing/pricing-tier-card.tsx`), current subscription status card with Customer Portal trigger & past due alert (`components/billing/subscription-status-card.tsx`), sidebar navigation item (`components/workspace/sidebar.tsx`), and Vitest component test suite (9/9 passing tests, 297/297 global).
 - [x] **FEAT-007-INT-stripe-webhooks**: Stripe Webhook HTTP Route Handler (`app/api/webhooks/stripe/route.ts`), raw cryptographic signature verification (`stripe.webhooks.constructEvent`), modular lifecycle event handlers (`lib/stripe/webhook-handlers.ts`) for `checkout.session.completed`, `customer.subscription.updated`, and `customer.subscription.deleted`, and Vitest integration test suite (10/10 passing tests, 307/307 global).
 - [x] **FEAT-007-VERIFY-billing**: Complete verification pass for Stripe Subscription Billing with 39/39 passing tests across 4 feature test suites (307/307 global passing), 0 TypeScript errors, 0 ESLint warnings, and 100% acceptance criteria verified.
+- [x] **FEAT-008-BE-analytics-metrics**: Team analytics metrics & aggregation engine (`lib/analytics/metrics.ts`), interval velocity calculations with zero-filling, cycle time mean/median/distribution calculations with zero-division guards, team workload aggregation with unassigned task grouping, Zod validations (`lib/validations/analytics.ts`), Server Actions (`server/actions/analytics.ts`), and Vitest unit test suite (18/18 passing tests, 325/325 global).
+- [x] **FEAT-008-FE-analytics-dashboard**: Team analytics dashboard page (`app/(dashboard)/[workspaceId]/analytics/page.tsx`), summary KPI cards (`components/analytics/kpi-card-grid.tsx`), Recharts velocity chart with SVG gradients (`components/analytics/velocity-chart.tsx`), turnaround distribution histogram (`components/analytics/cycle-time-chart.tsx`), member workload horizontal stacked bar chart (`components/analytics/workload-chart.tsx`), project & date range filter bar with non-blocking updates (`components/analytics/analytics-filters.tsx`), and Vitest component test suite (12/12 passing tests, 337/337 global).
 
 ## In Progress
 
-- [ ] **Phase 6 (Week 8)**: `FEAT-008-BE-analytics` (Analytics aggregation engine for sprint velocity, burndown, cycle time, and team workload).
+- [ ] **Phase 6 (Week 8)**: `FEAT-008-VERIFY-analytics` (Verification pass for Team Analytics).
 
 ## Next Up
 
-1. **Phase 6 (Week 8)**: `FEAT-008-BE-analytics` (Analytics aggregation engine for sprint velocity, burndown, cycle time, and team workload).
-2. **Phase 6 (Week 8)**: `FEAT-008-FE-analytics-charts` (Team analytics dashboard with Recharts visualizations).
-3. **Phase 6 (Week 8)**: `FEAT-008-VERIFY-analytics` (Verification pass for Team Analytics).
-4. **Phase 7 (Week 8)**: End-to-end browser testing with Playwright, performance tuning, and Vercel deployment.
+1. **Phase 6 (Week 8)**: `FEAT-008-VERIFY-analytics` (Verification pass for Team Analytics).
+2. **Phase 7 (Week 8)**: End-to-end browser testing with Playwright, performance tuning, and Vercel deployment.
 
 ## Open Questions
 

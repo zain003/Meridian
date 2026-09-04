@@ -22,7 +22,7 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-004-BE-realtime.md` | BE | P0 | Real-Time Sync | `FEAT-001-VERIFY-auth-workspace.md` | Completed | Real-time channel auth route handler and token minting |
 | `FEAT-004-INT-realtime-sync.md` | INT | P0 | Real-Time Sync | `FEAT-004-BE-realtime.md`, `FEAT-003-BE-tasks.md` | Completed | Task mutation event broadcast dispatchers and client sync hooks |
 | `FEAT-004-FE-presence-ui.md` | FE | P0 | Real-Time Sync | `FEAT-004-INT-realtime-sync.md` | Completed | Live presence avatar stack and active card viewer badges |
-| `FEAT-004-VERIFY-realtime.md` | VERIFY | P0 | Real-Time Sync | `FEAT-004-FE-presence-ui.md` | Not Started | Verification pass for Real-Time & Live Presence |
+| `FEAT-004-VERIFY-realtime.md` | VERIFY | P0 | Real-Time Sync | `FEAT-004-FE-presence-ui.md` | Completed | Verification pass for Real-Time & Live Presence |
 | `FEAT-005-BE-rule-engine.md` | BE | P0 | Automation Engine | `FEAT-003-BE-tasks.md` | Completed | JSON rule parser, condition evaluator, action executor, loop guard |
 | `FEAT-005-INT-queue-worker.md` | INT | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Completed | Upstash Redis queue producer/consumer and execution audit logger |
 | `FEAT-005-FE-rule-builder.md` | FE | P0 | Automation Engine | `FEAT-005-BE-rule-engine.md` | Completed | Visual block-based rule builder canvas and audit execution log list |
@@ -30,10 +30,10 @@ Running tracker of all feature specifications, layers, priorities, dependencies,
 | `FEAT-006-BE-notifications.md` | BE | P1 | Notifications | `FEAT-001-VERIFY-auth-workspace.md` | Completed | In-app notification CRUD and Resend transactional email dispatcher |
 | `FEAT-006-FE-notification-center.md` | FE | P1 | Notifications | `FEAT-006-BE-notifications.md` | Completed | Notification bell, unread badge, and notification popover drawer |
 | `FEAT-006-VERIFY-notifications.md` | VERIFY | P1 | Notifications | `FEAT-006-FE-notification-center.md` | Completed | Verification pass for Notifications |
-| `FEAT-007-BE-stripe-billing.md` | BE | P1 | Billing & Stripe | `FEAT-001-VERIFY-auth-workspace.md` | Not Started | Stripe Customer creation, Checkout session, and Customer Portal generator |
-| `FEAT-007-INT-stripe-webhooks.md` | INT | P1 | Billing & Stripe | `FEAT-007-BE-stripe-billing.md` | Not Started | Stripe webhook route handler with signature verification and tier sync |
-| `FEAT-007-FE-billing-portal.md` | FE | P1 | Billing & Stripe | `FEAT-007-BE-stripe-billing.md` | Not Started | Billing settings view with tier comparison card and upgrade triggers |
-| `FEAT-007-VERIFY-billing.md` | VERIFY | P1 | Billing & Stripe | `FEAT-007-FE-billing-portal.md` | Not Started | Verification pass for Stripe Billing |
-| `FEAT-008-BE-analytics-metrics.md` | BE | P1 | Analytics Dashboard | `FEAT-003-VERIFY-tasks.md` | Not Started | Database aggregation queries for velocity, burndown, cycle time, workload |
-| `FEAT-008-FE-analytics-dashboard.md` | FE | P1 | Analytics Dashboard | `FEAT-008-BE-analytics-metrics.md` | Not Started | Analytics dashboard page with Recharts charts and date filter controls |
+| `FEAT-007-BE-stripe-billing.md` | BE | P1 | Billing & Stripe | `FEAT-001-VERIFY-auth-workspace.md` | Completed | Stripe Customer creation, Checkout session, and Customer Portal generator |
+| `FEAT-007-INT-stripe-webhooks.md` | INT | P1 | Billing & Stripe | `FEAT-007-BE-stripe-billing.md` | Completed | Stripe webhook route handler with signature verification and tier sync |
+| `FEAT-007-FE-billing-portal.md` | FE | P1 | Billing & Stripe | `FEAT-007-BE-stripe-billing.md` | Completed | Billing settings view with tier comparison card and upgrade triggers |
+| `FEAT-007-VERIFY-billing.md` | VERIFY | P1 | Billing & Stripe | `FEAT-007-FE-billing-portal.md` | Completed | Verification pass for Stripe Billing |
+| `FEAT-008-BE-analytics-metrics.md` | BE | P1 | Analytics Dashboard | `FEAT-003-VERIFY-tasks.md` | Completed | Database aggregation queries for velocity, burndown, cycle time, workload |
+| `FEAT-008-FE-analytics-dashboard.md` | FE | P1 | Analytics Dashboard | `FEAT-008-BE-analytics-metrics.md` | Completed | Analytics dashboard page with Recharts charts and date filter controls |
 | `FEAT-008-VERIFY-analytics.md` | VERIFY | P1 | Analytics Dashboard | `FEAT-008-FE-analytics-dashboard.md` | Not Started | Verification pass for Analytics Dashboard |
