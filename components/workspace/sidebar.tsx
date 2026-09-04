@@ -72,9 +72,9 @@ export function Sidebar({
     },
     {
       label: "Automations",
-      href: `/${workspace.id}/automations`,
+      href: `/${workspace.id}/automation`,
       icon: Zap,
-      active: pathname.startsWith(`/${workspace.id}/automations`),
+      active: pathname.startsWith(`/${workspace.id}/automation`),
     },
     {
       label: "Analytics",

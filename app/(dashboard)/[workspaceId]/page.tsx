@@ -98,7 +98,13 @@ export default async function WorkspaceOverviewPage({
               size="sm"
               className="w-full text-xs gap-1.5 border-zinc-800 hover:bg-zinc-800"
             >
-              <Link href={`/${workspaceId}/boards`}>
+              <Link
+                href={
+                  workspace.projects[0]
+                    ? `/${workspaceId}/projects/${workspace.projects[0].id}`
+                    : `/${workspaceId}`
+                }
+              >
                 Open Boards <ArrowRight className="size-3.5 ml-auto" />
               </Link>
             </Button>
@@ -122,7 +128,7 @@ export default async function WorkspaceOverviewPage({
               size="sm"
               className="w-full text-xs gap-1.5 border-zinc-800 hover:bg-zinc-800"
             >
-              <Link href={`/${workspaceId}/automations`}>
+              <Link href={`/${workspaceId}/automation`}>
                 Configure Rules <ArrowRight className="size-3.5 ml-auto" />
               </Link>
             </Button>
